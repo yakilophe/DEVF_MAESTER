@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseñas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Generador de Contraseñas</h1>
+            <p>Crea contraseñas seguras</p>
+        </header>
+
+        <main>
+            <!-- Contraseña generada -->
+            <div class="password-area">
+                <div class="password-box">
+                    <span id="passwordOutput">········</span>
+                    <button id="copyBtn" class="copy-btn">Copiar</button>
+                </div>
+            </div>
+
+            <!-- Longitud -->
+            <div class="control-group">
+                <label for="lengthSlider">Longitud: <span id="lengthValue">16</span></label>
+                <input type="range" id="lengthSlider" min="8" max="32" value="16" step="1">
+            </div>
+
+            <!-- Opciones -->
+            <div class="options">
+                <label class="option">
+                    <input type="checkbox" id="includeUppercase" checked>
+                    Mayúsculas (A-Z)
+                </label>
+                <label class="option">
+                    <input type="checkbox" id="includeLowercase" checked>
+                    Minúsculas (a-z)
+                </label>
+                <label class="option">
+                    <input type="checkbox" id="includeNumbers" checked>
+                    Números (0-9)
+                </label>
+                <label class="option">
+                    <input type="checkbox" id="includeSymbols" checked>
+                    Símbolos (!@#$%^&*)
+                </label>
+            </div>
+
+            <!-- Nivel de seguridad -->
+            <div class="security-levels">
+                <button class="security-btn" data-level="weak">Debil</button>
+                <button class="security-btn" data-level="medium">Medio</button>
+                <button class="security-btn active" data-level="strong">Fuerte</button>
+                <button class="security-btn" data-level="very-strong">Muy Fuerte</button>
+            </div>
+
+            <!-- Medidor de fortaleza -->
+            <div class="strength-meter">
+                <div class="strength-info">
+                    <span>Fortaleza:</span>
+                    <span id="strengthText">Fuerte</span>
+                </div>
+                <div class="strength-bar">
+                    <div id="strengthBar" class="strength-fill strong"></div>
+                </div>
+            </div>
+
+            <!-- Botones -->
+            <div class="buttons">
+                <button id="generateBtn" class="btn-primary">Generar Contraseña</button>
+                <button id="refreshBtn" class="btn-secondary">Nueva</button>
+            </div>
+
+            <!-- Consejos -->
+            <div class="tips">
+                <h3>Consejos de seguridad</h3>
+                <ul>
+                    <li>Usa al menos 12 caracteres</li>
+                    <li>Combina diferentes tipos de caracteres</li>
+                    <li>No repitas contraseñas en diferentes sitios</li>
+                    <li>Cambia tus contraseñas regularmente</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>Generador de Contraseñas Seguras</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
