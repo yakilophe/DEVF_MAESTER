@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Caja de Comentarios - Simple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .comentario {
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .btn-eliminar {
+            background: #dc3545;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comentarios</h1>
+    
+    <textarea id="comentarioInput" rows="4" placeholder="Escribe tu comentario..."></textarea>
+    <br>
+    <button id="agregarBtn">Agregar Comentario</button>
+    
+    <h2>Comentarios:</h2>
+    <div id="comentariosLista"></div>
+
+    <script>
+        const comentariosLista = document.getElementById('comentariosLista');
+        const comentarioInput = document.getElementById('comentarioInput');
+        const agregarBtn = document.getElementById('agregarBtn');
+
+        function agregarComentario() {
+            const texto = comentarioInput.value.trim();
+            if (texto === '') {
+                alert('Escribe un comentario');
+                return;
+            }
+
+            const comentarioDiv = document.createElement('div');
+            comentarioDiv.className = 'comentario';
+            
+            const fecha = new Date().toLocaleString();
+            
+            comentarioDiv.innerHTML = `
+                <p>${texto}</p>
+                <small>${fecha}</small>
+                <button class="btn-eliminar" onclick="this.parentElement.remove()">Eliminar</button>
+            `;
+            
+            comentariosLista.appendChild(comentarioDiv);
+            comentarioInput.value = '';
+        }
+
+        agregarBtn.addEventListener('click', agregarComentario);
+        
+        // Permitir Enter para agregar
+        comentarioInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                agregarComentario();
+            }
+        });
+    </script>
+</body>
+</html>
